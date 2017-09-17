@@ -1,0 +1,28 @@
+.task-container {
+  padding: 5px 5px 5px 5px;
+
+}
+
+.task-title {
+  margin-left: 5px;
+}
+
+.task-body {
+  background: #E2E4E6;
+  margin : 5px 5px 5px 5px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0px #888888;
+  padding: 5px 5px 5px 5px;
+}
+
+.task-body:hover {
+  background: #C4C5C6;
+  cursor: pointer;
+}
+
+.task-edit-body {
+  background: #E2E4E6;
+  margin : 5px 5px 5px 5px;
+  border-radius: 3px;
+  padding: 5px 5px 5px 5px;
+}

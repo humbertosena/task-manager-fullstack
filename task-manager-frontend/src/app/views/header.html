@@ -1,0 +1,15 @@
+<header class="main-header">
+  <div class="container-fluid">
+    <div class="navbar-header">
+	  <a>Gerenciador de Tarefas</a>
+	</div>
+
+	<div>
+	  <ul class="nav navbar-nav navbar-right">
+	    <li><a>{{currentUser.name}}</a></li>
+      <li class="navbar-item" ng-show="!isAuthenticated"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Acessar</a></li>
+	    <li class="navbar-item" ng-show="isAuthenticated" ng-click="logout()"><a><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+	  </ul>
+	</div>
+  </div>
+</header>

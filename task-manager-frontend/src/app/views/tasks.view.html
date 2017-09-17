@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Área de listagem -->
+    <div class="col-md-6 task-container">
+      <div class="container-class">
+        <div class="row"> <!-- Card List - Header -->
+          <div class="col-md-6">
+            <h4 class="task-title">Tarefas disponíveis</h4>
+          </div>
+          <div class="col-md-6" align="right">
+            <h4><button ng-click="showNewTaskModal('#newTaskModal')" type="button" class="btn btn-primary btn-xs">Nova tarefa</button></h4>
+          </div>
+        </div>
+        <div class="row"> <!-- Card List - Body -->
+          <!-- ng-repeat -->
+          <div class="col-md-12" ng-repeat="task in taskList.content">
+            <div class="task-body" ng-click="selectTask(task)" ng-hide="task.completed" >
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p>{{task.description}}</p>
+                    <strong ng-hide="task.assigned == null" ><span class="glyphicon glyphicon-user"></span> Atribuído à {{task.assigned.name}}</strong><br/>
+                    <strong><span class="glyphicon glyphicon-calendar"></span> Criado em {{task.createDate | date:'dd/MM/yyyy'}}</strong>
+                  </div>
+                  <div class="col-md-2">
+                    <h4 class="text-right">{{task.id | taskIdMask:5}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Área de conteúdo -->
+    <div class="col-md-6 card-container">
+      <div class="container-fluid" ng-hide="taskSelected == null">
+        <div class="rown"> <!-- Title -->
+          <div class="col-md-11" ng-show="taskSelected.assigned != null">
+            <h4>Tarefa atribuída à {{ taskSelected.assigned.username == currentUser.username ? 'você' : taskSelected.assigned.name }} <span ng-show="taskSelected.assigned.username == currentUser.username"><a> | </a><button ng-click="unassignTask()" ng-disabled="cardEditSelected.completed" type="button" class="btn btn-default btn-xs">Largar Tarefa</button></span></h4>
+          </div>
+          <div class="col-md-11" ng-show="taskSelected.assigned == null">
+            <h4>Tarefa sem atribuição <span ng-show="taskSelected.assigned == null"><a> | </a><button ng-click="assignMeTask()" ng-disabled="taskSelected.completed" type="button" class="btn btn-primary btn-xs">Pegar Tarefa</button></span></h4>
+          </div>
+          <div class="col-md-1">
+            <h4 ng-click="taskSelected = null" style="cursor: pointer;"><span class="glyphicon glyphicon-remove"></span></h4>
+          </div>
+        </div>
+        <div class="rown"> <!-- Card Body -->
+          <div class="col-md-12">
+            <div class="container-fluid task-edit-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <span style="font-weight: bold;">Código</span><br/>
+                  {{taskSelected.id | taskIdMask:5}}
+                </div>
+                <div class="col-md-4">
+                  <span style="font-weight: bold;">Data da criação</span><br/>
+                  {{taskSelected.createDate | date:'dd/MM/yyyy HH:mm:ss'}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <p></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <span style="font-weight: bold;">Descrição</span><br/>
+                  <p>{{taskSelected.description}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <p></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <span style="font-weight: bold;">Resposta</span><br/>
+                  <textarea class="form-control" rows="4" placeholder="Digite sua resposta para tarefa"
+                            ng-model="taskSelected.answer"
+                            ng-disabled="taskSelected.assigned.username != currentUser.username || taskSelected.completed" ></textarea>
+                </div>
+                <div class="col-md-12">
+                  <p></p>
+                </div>
+                <div class="col-md-4" ng-show="taskSelected.assigned.username == currentUser.username">
+                  <!-- empty -->
+                </div>
+                <div class="col-md-8" align="right" ng-show="taskSelected.assigned.username == currentUser.username">
+                  <button ng-click="salveTask()" ng-disabled="taskSelected.completed" type="button" class="btn btn-default">Salvar tarefa</button>
+                  <button ng-click="completeTask()" ng-disabled="taskSelected.completed" type="button" class="btn btn-primary">Completar tarefa</button>
+                </div>
+              </div>
+              <div class="row>"
+                <div class="col-md-12">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- Fim Card Body -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Task -->
+<div class="container">
+<div id="newTaskModal" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Nova tarefa</h4>
+      </div>
+      <div class="modal-body">
+        <span style="font-weight: bold;">Descrição</span><br/>
+        <textarea class="form-control" rows="6" placeholder="Digite a descrição da tarefa a ser criada"
+                  ng-model="newDescription"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelNewTask()">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="salveNewTask()">Criar Nova Tarefa</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>

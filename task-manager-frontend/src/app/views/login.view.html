@@ -1,0 +1,18 @@
+<div id="login-block" class="login" style="color:#FFFFFF">
+  <div class="panel-login">
+    <div class="">
+	    <div class="account-wall">
+		    <form name="formSignin" class="form-signin" role="form">
+          <div class="login-input">
+            <input type="text" name="edtLogin" class="form-control form-white username" style="padding-left:10px" ng-model="user.userName" placeholder="  Usuário" required autofocus >
+          </div>
+          <div class="login-input">
+            <input type="password" name="edtPassword" class="form-control form-white password" style="padding-left:10px" ng-model="user.password" placeholder="  Senha" required>
+          </div>
+
+          <button type="button" id="submit-form" ng-click="validLogin(user.userName, user.password)"  ng-disabled="formSignin.$invalid"  class="btn btn-secondary btn-block ladda-button" data-style="expand-left">Entrar</button>
+        </form>
+	    </div>
+	  </div>
+  </div>
+</div>

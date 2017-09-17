@@ -1,0 +1,15 @@
+{
+  "name": "task-manager-frontend",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["task manager fullstack html5 css javascript"],
+  "author": "Humberto Sena Santos <humbertosena@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+
+  }
+}

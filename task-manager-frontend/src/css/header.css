@@ -1,0 +1,42 @@
+.main-header {
+  background-color: #00547E;
+  border-bottom: 4px solid #04A3ED;
+  width:100%;
+  height: auto;
+  padding: 0 10px;
+  position: fixed;
+  margin: 0px;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.main-header  .navbar-nav >  li > a {
+  font-size: 13px;
+  color: white;
+  padding: 10px 35px;
+
+}
+
+.main-header  .navbar-nav >  li > a:hover {
+  background-color: #00547E;
+}
+
+.main-header  .navbar-nav >  li.navbar-item > a:hover {
+  background-color: #04A3ED;
+  cursor : pointer;
+}
+
+.main-header  .navbar-nav >  li.navbar-item > a:visited {
+  background-color: #04A3ED;
+}
+
+
+.navbar-header > a {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  padding: 5px 30px;
+}
