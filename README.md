@@ -163,6 +163,8 @@ Embora este projeto foi realizado para um objetivo específico de avaliação, e
 ## Tópicos à serem evoluídos
 
 ### Front-end
+- Automatizar o processo de build com Grunt;
+- Incluir JSHint para análise de código estático;
 - Aumentar a cobertura de testes;
 - Configurar o framework Karma para execução de testes automatizados em javascript;
 - Ajustar as páginas HTMLs para serem responsivas com dispositívos móveis.
