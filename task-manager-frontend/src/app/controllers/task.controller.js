@@ -56,11 +56,11 @@ function TaskController( $scope, $rootScope, toaster, TaskService ) {
     refreshTasks();
   }
 
-  function unassignTaskError() {
+  function unassignTaskError( response ) {
     if ( response.status == 403 ) {
       toaster.warning( 'ATENÇÃO', 'Você não tem autorização para liberar esta tarefa.' );
     } else {
-      toaster.error( 'Erro na tentativa de salvar a tarefa.' +
+      toaster.error( 'Erro na tentativa de liberar a tarefa.' +
                      'Tente mais tarde, se o problema persistir entre em contato com o suporte' );
     }
     refreshTasks();
@@ -79,7 +79,7 @@ function TaskController( $scope, $rootScope, toaster, TaskService ) {
     refreshTasks();
   }
 
-  function assignMeTaskError() {
+  function assignMeTaskError( response ) {
     if ( response.status == 403 ) {
       toaster.warning( 'ATENÇÃO', 'Você não tem autorização para pegar esta tarefa.' );
     } else {
