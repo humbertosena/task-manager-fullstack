@@ -9,7 +9,7 @@ describe('Login Suite', function() {
       'token':'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiI0MWQ5NDIwMy1kNzMyLTQwMGItYTkzYy1kOTE1NjRlYWUyZDIiLCJzdWIiOiJkZXNhZmlvIiwidXNlcm5hbWUiOiJkZXNhZmlvIiwiaWF0IjoxNTA1NTg0MzIwLCJleHAiOjE1MDU2NzA3MjB9.o6nRLwDSzMvFlbjQXqw1jJQUAMtnRhQV13zQt6HvEIf7EURBtEMSQFdwcFyM-K2VjTpkIfPGk1weQKiQ2SYFrA' };
 
   beforeEach(function () {
-    angular.mock.module('TaskManeger_App', function($provide) {
+    angular.mock.module('TaskManeger_App', function( $provide ) {
       $provide.constant('ENVIRONMENT', {
           'UrlBase': '',
           'Auth': '/api/v1/auth',
@@ -17,6 +17,7 @@ describe('Login Suite', function() {
           'API_Task': '/api/v1/tasks'
       });
     });
+    
     angular.mock.module('toaster');
 
     angular.mock.inject( function ($httpBackend, $controller, $rootScope, $location, toaster, AuthService) {
@@ -25,13 +26,12 @@ describe('Login Suite', function() {
       _httpBackend_ = $httpBackend;
       _toaster_ = toaster;
 
-
-      spyOn(_toaster_, 'warning');
-      spyOn(_toaster_, 'error');
+      spyOn( _toaster_, 'warning' );
+      spyOn( _toaster_, 'error' );
 
       _authRequestHandler_ = _httpBackend_.when( 'POST', '/api/v1/auth' ).respond( 200, respondLogin );
 
-      $controller('loginController', {
+      $controller( 'loginController', {
         $scope : $scope,
         $location : $location,
         toaster : toaster,
