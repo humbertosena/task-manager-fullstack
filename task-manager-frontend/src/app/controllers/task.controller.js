@@ -45,10 +45,10 @@ function TaskController( $scope, $rootScope, toaster, TaskService ) {
 
   function unassignTask() {
     TaskService.unassignTask(
-        $scope.taskSelected.id,
-        $scope.currentUser.username,
-        unassignTaskSuccess,
-        unassignTaskError
+      $scope.taskSelected.id,
+      $scope.currentUser.username,
+      unassignTaskSuccess,
+      unassignTaskError
     );
   }
 
@@ -68,10 +68,10 @@ function TaskController( $scope, $rootScope, toaster, TaskService ) {
 
   function assignMeTask() {
     TaskService.assignTask(
-        $scope.taskSelected.id,
-        $scope.currentUser.username,
-        assignMeTaskSuccess,
-        assignMeTaskError
+      $scope.taskSelected.id,
+      $scope.currentUser.username,
+      assignMeTaskSuccess,
+      assignMeTaskError
     );
   }
 

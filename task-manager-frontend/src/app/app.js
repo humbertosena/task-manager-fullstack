@@ -10,21 +10,21 @@
 
   window.app = window.angular.module('TaskManeger_App', [ 'ngRoute', 'toaster' ] );
 
-  app.config(RouteConfig);
+  window.app.config(RouteConfig);
 
-  RouteConfig.$inject = [ '$routeProvider', '$locationProvider', '$httpProvider' ];
+  RouteConfig.$inject = [ '$routeProvider', '$locationProvider' ];
 
-  function RouteConfig(  $routeProvider, $locationProvider, $httpProvider, $location ) {
+  function RouteConfig(  $routeProvider, $locationProvider ) {
 
-  $locationProvider.html5Mode( {
-    enabled     : true,
-    requireBase : false,
-    hashPrefix  : ''
-  });
+    $locationProvider.html5Mode( {
+      enabled     : true,
+      requireBase : false,
+      hashPrefix  : ''
+    });
 
-  $routeProvider.caseInsensitiveMatch = true;
+    $routeProvider.caseInsensitiveMatch = true;
 
-  $routeProvider
+    $routeProvider
       .when( '/'         , {
         templateUrl : 'app/views/welcome.html'
       }).when( '/login'  , {

@@ -1,28 +1,28 @@
 describe('Login Suite', function() {
 
   var _httpBackend_,
-      _authRequestHandler_,
-      _toaster_;
+    _authRequestHandler_,
+    _toaster_;
 
   var respondLogin = {
-      'user':[ { 'username':'desafio', 'name':'FullStack 01'} ],
-      'token':'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiI0MWQ5NDIwMy1kNzMyLTQwMGItYTkzYy1kOTE1NjRlYWUyZDIiLCJzdWIiOiJkZXNhZmlvIiwidXNlcm5hbWUiOiJkZXNhZmlvIiwiaWF0IjoxNTA1NTg0MzIwLCJleHAiOjE1MDU2NzA3MjB9.o6nRLwDSzMvFlbjQXqw1jJQUAMtnRhQV13zQt6HvEIf7EURBtEMSQFdwcFyM-K2VjTpkIfPGk1weQKiQ2SYFrA' };
+    'user':[ { 'username':'desafio', 'name':'FullStack 01'} ],
+    'token':'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiI0MWQ5NDIwMy1kNzMyLTQwMGItYTkzYy1kOTE1NjRlYWUyZDIiLCJzdWIiOiJkZXNhZmlvIiwidXNlcm5hbWUiOiJkZXNhZmlvIiwiaWF0IjoxNTA1NTg0MzIwLCJleHAiOjE1MDU2NzA3MjB9.o6nRLwDSzMvFlbjQXqw1jJQUAMtnRhQV13zQt6HvEIf7EURBtEMSQFdwcFyM-K2VjTpkIfPGk1weQKiQ2SYFrA' };
 
   beforeEach(function () {
     angular.mock.module('TaskManeger_App', function( $provide ) {
       $provide.constant('ENVIRONMENT', {
-          'UrlBase': '',
-          'Auth': '/api/v1/auth',
-          'UrlBaseTask': '',
-          'API_Task': '/api/v1/tasks'
+        'UrlBase': '',
+        'Auth': '/api/v1/auth',
+        'UrlBaseTask': '',
+        'API_Task': '/api/v1/tasks'
       });
     });
-    
+
     angular.mock.module('toaster');
 
     angular.mock.inject( function ($httpBackend, $controller, $rootScope, $location, toaster, AuthService) {
       $scope = $rootScope.$new();
-      $location = $location;
+      //$location = $location;
       _httpBackend_ = $httpBackend;
       _toaster_ = toaster;
 

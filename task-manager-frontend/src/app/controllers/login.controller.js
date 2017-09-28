@@ -14,14 +14,14 @@ function LoginController( $scope, $location, toaster, AuthService ) {
   initialization();
 
   function initialization() {
-      //TODO
+    //TODO
   }
 
   function validLogin( usuario, senha ){
-		AuthService.authenticate(usuario,senha,authenticateSuccess,authenticateError);
-	}
+    AuthService.authenticate(usuario,senha,authenticateSuccess,authenticateError);
+  }
 
-	function authenticateSuccess( response ){
+  function authenticateSuccess( response ){
     if ( response.status != 200 ) {
       $scope.user.userName = '';
       $scope.user.password = '';
@@ -41,6 +41,6 @@ function LoginController( $scope, $location, toaster, AuthService ) {
       toaster.error( 'Erro na tentativa de login.' +
                      'Tente mais tarde, se o problema persistir entre em contato com o suporte' );
     }
-	}
+  }
 
 }

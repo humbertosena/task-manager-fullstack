@@ -4,8 +4,8 @@
 * @author Humberto Sena Santos
 */
 window.app.constant('ENVIRONMENT', {
-    'UrlBase': 'http://localhost:9000',
-    'Auth': '/api/v1/auth',
-    'UrlBaseTask': 'http://localhost:9000',
-    'API_Task': '/api/v1/tasks'
+  'UrlBase': 'http://localhost:9000',
+  'Auth': '/api/v1/auth',
+  'UrlBaseTask': 'http://localhost:9000',
+  'API_Task': '/api/v1/tasks'
 });

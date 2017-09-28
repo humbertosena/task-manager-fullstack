@@ -1,42 +1,42 @@
 describe('Task Suite', function() {
 
   var _toaster_,
-      _taskGetRequestHandler_,
-      _taskPutRequestHandler_,
-      _httpBackend_;
+    _taskGetRequestHandler_,
+    _taskPutRequestHandler_,
+    _httpBackend_;
 
   var taskList = {
-   content:[
-      { id:1,description:"Primeira task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:2,description:"Segunda task criada",answer:null,assigned:"desafio",createDate:1505068926115,completed:false },
-      { id:3,description:"Terceira task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:4,description:"Quarta task criada",answer:null,assigned:"desafio",createDate:1505068926115,completed:false },
-      { id:5,description:"Quinta task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:6,description:"Sexta task criada",answer:null,assigned:"fullstack",createDate:1505068926115,completed:false },
-      { id:7,description:"Sétima task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:8,description:"Oitava task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:9,description:"Nona task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:10,description:"Décima task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:11,description:"Décima-primeira task criada",answer:null,assigned:null,createDate:1505068926115,completed:false },
-      { id:12,description:"Décima-segunda task criada",answer:null,assigned:null,createDate:1505068926115,completed:false }
-     ],
-   last:true,
-   totalPages:1,
-   totalElements:12,
-   size:100,
-   number:0,
-   sort:null,
-   first:true,
-   numberOfElements:5
+    content:[
+      { id:1,description:'Primeira task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:2,description:'Segunda task criada',answer:null,assigned:'desafio',createDate:1505068926115,completed:false },
+      { id:3,description:'Terceira task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:4,description:'Quarta task criada',answer:null,assigned:'desafio',createDate:1505068926115,completed:false },
+      { id:5,description:'Quinta task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:6,description:'Sexta task criada',answer:null,assigned:'fullstack',createDate:1505068926115,completed:false },
+      { id:7,description:'Sétima task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:8,description:'Oitava task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:9,description:'Nona task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:10,description:'Décima task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:11,description:'Décima-primeira task criada',answer:null,assigned:null,createDate:1505068926115,completed:false },
+      { id:12,description:'Décima-segunda task criada',answer:null,assigned:null,createDate:1505068926115,completed:false }
+    ],
+    last:true,
+    totalPages:1,
+    totalElements:12,
+    size:100,
+    number:0,
+    sort:null,
+    first:true,
+    numberOfElements:5
   };
 
   beforeEach(function () {
     angular.mock.module('TaskManeger_App', function( $provide ) {
       $provide.constant('ENVIRONMENT', {
-          'UrlBase': '',
-          'Auth': '/api/v1/auth',
-          'UrlBaseTask': '',
-          'API_Task': '/api/v1/tasks'
+        'UrlBase': '',
+        'Auth': '/api/v1/auth',
+        'UrlBaseTask': '',
+        'API_Task': '/api/v1/tasks'
       });
     });
 
@@ -96,7 +96,7 @@ describe('Task Suite', function() {
     // Em taskList id:6 tem assigned:"fullstack"
     // '/4/unassigned/desafio'
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        return putResponse( false, url, data, params );
+      return putResponse( false, url, data, params );
     });
     $scope.selectTask(taskList.content[3]);
     $scope.unassignTask();
@@ -112,7 +112,7 @@ describe('Task Suite', function() {
     // Em taskList id:6 tem assigned:"fullstack"
     // '/6/unassigned/desafio'
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        return putResponse( false, url, data, params );
+      return putResponse( false, url, data, params );
     });
 
     $scope.selectTask(taskList.content[5]);
@@ -123,14 +123,14 @@ describe('Task Suite', function() {
     _httpBackend_.flush();
 
     expect(_toaster_.warning).toHaveBeenCalledWith( 'ATENÇÃO', 'Você não tem autorização para liberar esta tarefa.' );
-  })
+  });
 
   it ( 'Informa erro ao tentar liberar tarefa', function () {
     // Em taskList id:2 e id:4 tem assigned:"desafio" (Meu Usuário)
     // Em taskList id:6 tem assigned:"fullstack"
     // '/4/unassigned/desafio'
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        return putResponse( true, url, data, params );
+      return putResponse( true, url, data, params );
     });
 
     $scope.selectTask(taskList.content[3]);
@@ -148,7 +148,7 @@ describe('Task Suite', function() {
     // Em taskList id:6 tem assigned:"fullstack"
     // '/1/assigned/desafio'
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        return putResponse( false, url, data, params );
+      return putResponse( false, url, data, params );
     });
     $scope.selectTask(taskList.content[0]);
     $scope.assignMeTask();
@@ -163,7 +163,7 @@ describe('Task Suite', function() {
     // Em taskList id:6 tem assigned:"fullstack"
     // '/6/assigned/desafio'
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        return putResponse( false, url, data, params );
+      return putResponse( false, url, data, params );
     });
 
     $scope.selectTask(taskList.content[5]);
@@ -181,7 +181,7 @@ describe('Task Suite', function() {
     // Em taskList id:6 tem assigned:"fullstack"
     // '/4/assigned/desafio'
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        return putResponse( true, url, data, params );
+      return putResponse( true, url, data, params );
     });
 
     $scope.selectTask(taskList.content[3]);
@@ -194,57 +194,56 @@ describe('Task Suite', function() {
                    'Tente mais tarde, se o problema persistir entre em contato com o suporte' );
   });
 
-// completed
-it ( 'Marca como completa a tarefa associada ao usuário autenticado', function () {
-  // Em taskList id:2 e id:4 tem assigned:"desafio" (Meu Usuário)
-  // Em taskList id:6 tem assigned:"fullstack"
-  // '/1/assigned/desafio'
-  _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
+  // completed
+  it ( 'Marca como completa a tarefa associada ao usuário autenticado', function () {
+    // Em taskList id:2 e id:4 tem assigned:"desafio" (Meu Usuário)
+    // Em taskList id:6 tem assigned:"fullstack"
+    // '/1/assigned/desafio'
+    _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
       return putResponse( false, url, data, params );
-  });
-  $scope.selectTask(taskList.content[1]);
-  $scope.completeTask();
-  _httpBackend_.expectPUT('/api/v1/tasks/' + $scope.taskSelected.id + '/completed/' + $scope.currentUser.username);
-  expect(_httpBackend_.flush).not.toThrow();
+    });
+    $scope.selectTask(taskList.content[1]);
+    $scope.completeTask();
+    _httpBackend_.expectPUT('/api/v1/tasks/' + $scope.taskSelected.id + '/completed/' + $scope.currentUser.username);
+    expect(_httpBackend_.flush).not.toThrow();
 
-  expect($scope.taskSelected.completed).toBe(true);
-});
-
-it ( 'Informa negação ao tentar completar a tarefa de outro usuário', function () {
-  // Em taskList id:2 e id:4 tem assigned:"desafio" (Meu Usuário)
-  // Em taskList id:6 tem assigned:"fullstack"
-  // '/6/assigned/desafio'
-  _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-      return putResponse( false, url, data, params );
+    expect($scope.taskSelected.completed).toBe(true);
   });
 
-  $scope.selectTask(taskList.content[5]);
-  $scope.completeTask();
+  it ( 'Informa negação ao tentar completar a tarefa de outro usuário', function () {
+    // Em taskList id:2 e id:4 tem assigned:"desafio" (Meu Usuário)
+    // Em taskList id:6 tem assigned:"fullstack"
+    // '/6/assigned/desafio'
+    _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
+      return putResponse( false, url, data, params );
+    });
 
+    $scope.selectTask(taskList.content[5]);
+    $scope.completeTask();
 
-  _httpBackend_.expectPUT('/api/v1/tasks/' + $scope.taskSelected.id + '/completed/' + $scope.currentUser.username);
-  _httpBackend_.flush();
+    _httpBackend_.expectPUT('/api/v1/tasks/' + $scope.taskSelected.id + '/completed/' + $scope.currentUser.username);
+    _httpBackend_.flush();
 
-  expect(_toaster_.warning).toHaveBeenCalledWith( 'ATENÇÃO', 'Você não tem autorização para completar esta tarefa.' );
-});
+    expect(_toaster_.warning).toHaveBeenCalledWith( 'ATENÇÃO', 'Você não tem autorização para completar esta tarefa.' );
+  });
 
-it ( 'Informa erro ao tentar marcar como completa', function () {
-  // Em taskList id:2 e id:4 tem assigned:"desafio" (Meu Usuário)
-  // Em taskList id:6 tem assigned:"fullstack"
-  // '/4/assigned/desafio'
-  _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
+  it ( 'Informa erro ao tentar marcar como completa', function () {
+    // Em taskList id:2 e id:4 tem assigned:"desafio" (Meu Usuário)
+    // Em taskList id:6 tem assigned:"fullstack"
+    // '/4/assigned/desafio'
+    _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
       return putResponse( true, url, data, params );
-  });
+    });
 
-  $scope.selectTask(taskList.content[1]);
-  $scope.completeTask();
+    $scope.selectTask(taskList.content[1]);
+    $scope.completeTask();
 
-  _httpBackend_.expectPUT('/api/v1/tasks/' + $scope.taskSelected.id + '/completed/' + $scope.currentUser.username);
-  _httpBackend_.flush();
+    _httpBackend_.expectPUT('/api/v1/tasks/' + $scope.taskSelected.id + '/completed/' + $scope.currentUser.username);
+    _httpBackend_.flush();
 
-  expect(_toaster_.error).toHaveBeenCalledWith( 'Erro na tentativa de completar a tarefa.' +
+    expect(_toaster_.error).toHaveBeenCalledWith( 'Erro na tentativa de completar a tarefa.' +
                  'Tente mais tarde, se o problema persistir entre em contato com o suporte' );
-});
+  });
 
   it ( 'Salva definição da tarefa associada ao usuário autenticado', function () {
     // Em taskList id:4 tem assigned:"desafio" (Meu Usuário)
@@ -252,8 +251,8 @@ it ( 'Informa erro ao tentar marcar como completa', function () {
     // '/1/assigned/desafio'
     _taskPutRequestHandler_ = _httpBackend_.whenPUT( /\/api\/v1\/tasks\/(.+)/, undefined, undefined, ['id'] );
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        params.action = 'salve';
-        return putResponse( false, url, data, params );
+      params.action = 'salve';
+      return putResponse( false, url, data, params );
     });
     //$scope.selectTask(taskList.content[0]);
     // TODO Rever a ateração da resposta, alteração realizada sobre o mesmo objeto do backend.
@@ -272,8 +271,8 @@ it ( 'Informa erro ao tentar marcar como completa', function () {
     // '/1/assigned/desafio'
     _taskPutRequestHandler_ = _httpBackend_.whenPUT( /\/api\/v1\/tasks\/(.+)/, undefined, undefined, ['id'] );
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        params.action = 'salve';
-        return putResponse( false, url, data, params );
+      params.action = 'salve';
+      return putResponse( false, url, data, params );
     });
     //$scope.selectTask(taskList.content[0]);
     // TODO Rever a ateração da resposta, alteração realizada sobre o mesmo objeto do backend.
@@ -292,8 +291,8 @@ it ( 'Informa erro ao tentar marcar como completa', function () {
     // '/1/assigned/desafio'
     _taskPutRequestHandler_ = _httpBackend_.whenPUT( /\/api\/v1\/tasks\/(.+)/, undefined, undefined, ['id'] );
     _taskPutRequestHandler_.respond( function(method, url, data, headers, params) {
-        params.action = 'salve';
-        return putResponse( true, url, data, params );
+      params.action = 'salve';
+      return putResponse( true, url, data, params );
     });
     //$scope.selectTask(taskList.content[0]);
     // TODO Rever a ateração da resposta, alteração realizada sobre o mesmo objeto do backend.
@@ -314,51 +313,51 @@ it ( 'Informa erro ao tentar marcar como completa', function () {
     if (urlError == true) {
       return [ 401, '' ];
     } else {
-      __task__ = searchTask(params.id);
-      if ( __task__ == null ) { return null };
+      var __task__ = searchTask(params.id);
+      if ( __task__ == null ) { return null; }
 
       switch (params.action) {
-        case 'unassigned':
-          if ( __task__.assigned === params.username ) {
-            unassignTask( params.id );
-            return [ 200, '' ];
-          } else {
-            return [ 403, '' ];
-          }
-        case 'assigned':
+      case 'unassigned':
+        if ( __task__.assigned === params.username ) {
+          unassignTask( params.id );
+          return [ 200, '' ];
+        } else {
+          return [ 403, '' ];
+        }
+      case 'assigned':
         if ( __task__.assigned === null || __task__.assigned === params.username ) {
           __task__.assigned = params.username;
           return [ 200, '' ];
         } else {
           return [ 403, '' ];
         }
-        case 'salve':
-          __data__ = JSON.parse( data );
-          if ( data !== null && __task__.id == params.id ) {
-            if ( __task__.assigned == __data__.assigned ) {
-              __task__.answer = __data__.answer;
-              return [ '200', '' ];
-            } else {
-              return [ '403', '' ];
-            }
+      case 'salve':
+        var __data__ = JSON.parse( data );
+        if ( data !== null && __task__.id == params.id ) {
+          if ( __task__.assigned == __data__.assigned ) {
+            __task__.answer = __data__.answer;
+            return [ '200', '' ];
           } else {
-            return [ '401', '' ];
+            return [ '403', '' ];
           }
-        case 'completed':
+        } else {
+          return [ '401', '' ];
+        }
+      case 'completed':
         if ( __task__.assigned === params.username ) {
           __task__.completed = true;
           return [ 200, '' ];
         } else {
           return [ 403, '' ];
         }
-        default:
-          return [ '401', '' ];
+      default:
+        return [ '401', '' ];
       }
     }
-  };
+  }
 
   function searchTask( id ) {
-    for ( i = 0; i < taskList.content.length; i++ ) {
+    for ( var i = 0; i < taskList.content.length; i++ ) {
       if ( taskList.content[i].id == id  )
         return taskList.content[i];
     }
@@ -366,7 +365,7 @@ it ( 'Informa erro ao tentar marcar como completa', function () {
   }
 
   function unassignTask( id ) {
-    for ( i = 0; i < taskList.content.length; i++ ) {
+    for ( var i = 0; i < taskList.content.length; i++ ) {
       if ( taskList.content[i].id == id ) {
         taskList.content[i].assigned = null;
       }
