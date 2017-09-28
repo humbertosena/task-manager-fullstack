@@ -102,9 +102,10 @@ Acesse o diretório do **Front-end** via terminal de linha de comando (outra ins
 
 ```sh
 $ cd /<diretório do repositório>/task-manager-fullstack/task-manager-frontend
-$ npm install http-server -g
-$ npm install jasmine
-$ npm install jasmine -g
+$ npm install -g http-server
+$ npm install -g jasmine
+$ npm install -g eslint
+$ npm install -g eslint-plugin-angular
 ```
 
 ### Configurações
@@ -128,6 +129,17 @@ window.app.constant("ENVIRONMENT", {
 Os teste unitários do front-end utiliza a biblioteca Jasmine, framework para testes de código JavaScript.
 
 Para execução manual, para o arquivo **spec/spec_runner.html** no browser Chrome.
+
+Os teste do estilo de código JS, está sendo utilizado o ESLint, sendo configurado no arquivo *.eslintrc.js*.
+
+Para executar manualmente:
+```sh
+$ // Validação da aplicação
+$ eslint ./src/app/**/*.js
+$
+$ // Validação dos testes
+$ eslint ./spec/app/controller/*.spec.js
+```sh
 
 ### Execução
 A aplicação **task-manager-frontend** contém todos as bibliotecas necessárias para ser executado, necessitando somente a execução de um servidor http que responda os arquivo da pasta e subpastas onde ele foi executado.
@@ -164,7 +176,7 @@ Embora este projeto foi realizado para um objetivo específico de avaliação, e
 
 ### Front-end
 - Automatizar o processo de build com Grunt;
-- Incluir JSHint para análise de código estático;
+- ~~Incluir JSHint para análise de código estático;~~
 - ~~Aumentar a cobertura de testes~~;
 - Configurar o framework Karma para execução de testes automatizados em javascript;
 - Ajustar as páginas HTMLs para serem responsivas com dispositívos móveis.
