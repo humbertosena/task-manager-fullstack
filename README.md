@@ -139,7 +139,7 @@ $ eslint ./src/app/**/*.js
 $
 $ // Validação dos testes
 $ eslint ./spec/app/controller/*.spec.js
-```sh
+```
 
 ### Execução
 A aplicação **task-manager-frontend** contém todos as bibliotecas necessárias para ser executado, necessitando somente a execução de um servidor http que responda os arquivo da pasta e subpastas onde ele foi executado.
