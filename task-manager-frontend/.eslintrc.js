@@ -6,7 +6,8 @@ module.exports = {
     },
     "globals": {
       "angular": true,
-      "$scope": true
+      "$scope": true,
+      "module": true
     },
     "extends": "eslint:recommended",
     "rules": {

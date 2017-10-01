@@ -4,12 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "eslint src/app spec",
+    "test": "karma start karma.conf.js"
   },
-  "keywords": ["task manager fullstack html5 css javascript"],
+  "keywords": [
+    "task manager fullstack html5 css javascript"
+  ],
   "author": "Humberto Sena Santos <humbertosena@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-eslint": "^2.2.0",
+    "karma-jasmine": "^1.1.0"
   }
 }

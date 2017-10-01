@@ -106,6 +106,10 @@ $ npm install -g http-server
 $ npm install -g jasmine
 $ npm install -g eslint
 $ npm install -g eslint-plugin-angular
+$
+$ npm install karma --save-dev
+$ npm install  karma-cli karma-eslint karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+$
 ```
 
 ### Configurações
@@ -126,19 +130,18 @@ window.app.constant("ENVIRONMENT", {
 ```
 
 ### Testes
-Os teste unitários do front-end utiliza a biblioteca Jasmine, framework para testes de código JavaScript.
 
-Para execução manual, para o arquivo **spec/spec_runner.html** no browser Chrome.
+
+Os teste unitários do front-end utiliza o framework Jasmine para testes de código JavaScript.
 
 Os teste do estilo de código JS, está sendo utilizado o ESLint, sendo configurado no arquivo *.eslintrc.js*.
 
-Para executar manualmente:
+A execução dos testes utiliza o framework Karma, as configurações são registradas no arquivo *karma.config.js*.
+
 ```sh
-$ // Validação da aplicação
-$ eslint ./src/app/**/*.js
+$ // Executar o comando npm test no diretório raiz.
+$ npm test
 $
-$ // Validação dos testes
-$ eslint ./spec/app/controller/*.spec.js
 ```
 
 ### Execução
